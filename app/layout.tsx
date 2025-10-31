@@ -4,6 +4,7 @@ import { Geist, Geist_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { AuthProvider } from "@/contexts/auth-context"
+import { PriceProvider } from "@/contexts/price-context"
 import { Suspense } from "react"
 
 export const metadata: Metadata = {
@@ -31,7 +32,9 @@ export default function RootLayout({
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <body>
         <Suspense fallback={<div>Loading...</div>}>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <PriceProvider>{children}</PriceProvider>
+          </AuthProvider>
         </Suspense>
         <Analytics />
       </body>

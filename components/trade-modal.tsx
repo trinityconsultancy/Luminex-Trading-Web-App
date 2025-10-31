@@ -58,9 +58,7 @@ export function TradeModal({ isOpen, onClose, symbol, action }: TradeModalProps)
             <span>
               {action === "buy" ? "Buy" : "Sell"} {symbol}
             </span>
-            <Button variant="ghost" size="icon" onClick={onClose}>
-              <X className="w-4 h-4" />
-            </Button>
+            
           </DialogTitle>
         </DialogHeader>
 

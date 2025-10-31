@@ -21,8 +21,6 @@ const initialStocks: Stock[] = [
   { symbol: "ITC", price: 456.75, change: 3.25, changePercent: 0.72 },
   { symbol: "SBIN", price: 625.8, change: 12.4, changePercent: 2.02 },
   { symbol: "AXISBANK", price: 1089.5, change: -8.7, changePercent: -0.79 },
-  { symbol: "KOTAKBANK", price: 1756.3, change: 22.1, changePercent: 1.27 },
-  { symbol: "LT", price: 3421.6, change: -15.3, changePercent: -0.45 },
 ]
 
 export function StockTicker() {

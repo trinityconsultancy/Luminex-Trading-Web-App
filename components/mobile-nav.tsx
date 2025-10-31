@@ -2,17 +2,17 @@
 
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-import { Home, TrendingUp, Eye, Wallet, User } from "lucide-react"
+import { Home, TrendingUp, BarChart3, Briefcase, Package } from "lucide-react"
 
 export function MobileNav() {
   const pathname = usePathname()
 
   const navItems = [
     { href: "/dashboard", icon: Home, label: "Home" },
-    { href: "/trade", icon: TrendingUp, label: "Trade" },
-    { href: "/watchlist", icon: Eye, label: "Watchlist" },
-    { href: "/funds", icon: Wallet, label: "Funds" },
-    { href: "/profile", icon: User, label: "Profile" },
+    { href: "/charts", icon: BarChart3, label: "Charts" },
+    { href: "/holdings", icon: Package, label: "Holdings" },
+    { href: "/positions", icon: Briefcase, label: "Positions" },
+    { href: "/fno", icon: TrendingUp, label: "F&O" },
   ]
 
   return (
