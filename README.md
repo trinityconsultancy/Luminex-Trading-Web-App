@@ -1,30 +1,76 @@
-# Luminex stock trading app
+# Luminex Trading App
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
-
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/psymurais-projects/v0-luminex-stock-trading-app)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/5q5LGWHKJM3)
+**Virtual Stock Trading Platform - Final Year Project Demo**
 
 ## Overview
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+Luminex is a demo trading application built as a final year project MVP. It features OTP-based authentication, real-time mock stock prices, and a modern trading interface.
 
-## Deployment
+## Tech Stack
 
-Your project is live at:
+- **Frontend**: Next.js 15 + TypeScript + Tailwind CSS + shadcn/ui
+- **Backend**: Express.js + MongoDB (Mongoose)
+- **Authentication**: OTP-based email verification with JWT tokens
+- **Features**: Mock stock trading, portfolio management, real-time price updates
 
-**[https://vercel.com/psymurais-projects/v0-luminex-stock-trading-app](https://vercel.com/psymurais-projects/v0-luminex-stock-trading-app)**
+## Quick Start
 
-## Build your app
+### 1. Start Backend
+```bash
+cd backend
+npm install
+npm run setup  # One-time setup (creates .env, tests services)
+npm run dev    # Runs on http://localhost:5000
+```
 
-Continue building your app on:
+### 2. Start Frontend
+```bash
+pnpm install
+pnpm dev       # Runs on http://localhost:3000
+```
 
-**[https://v0.app/chat/projects/5q5LGWHKJM3](https://v0.app/chat/projects/5q5LGWHKJM3)**
+## Project Structure
 
-## How It Works
+```
+├── app/              # Next.js pages (signup, login, dashboard, etc.)
+├── components/       # React components (UI, charts, modals)
+├── contexts/         # React Context (auth, price data)
+├── lib/              # API helpers, utilities
+├── backend/          # Express server, MongoDB models, routes
+└── public/           # Static assets
+```
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+## Features
+
+✅ Email OTP authentication  
+✅ Real-time stock price simulation  
+✅ Portfolio & holdings management  
+✅ Mock trading (buy/sell stocks)  
+✅ Funds management  
+✅ Responsive design (mobile + desktop)  
+
+## Environment Variables
+
+### Frontend (.env.local)
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
+```
+
+### Backend (.env)
+```bash
+MONGODB_URI=mongodb://127.0.0.1:27017/luminex-trading
+JWT_SECRET=your-secret-here
+EMAIL_USER=your-email@gmail.com
+EMAIL_PASS=your-app-password
+```
+
+## Documentation
+
+- **[AUTH_FLOW.md](./AUTH_FLOW.md)** - Authentication flow documentation
+- **[VALIDATION_RULES.md](./VALIDATION_RULES.md)** - Form validation rules
+- **[.github/copilot-instructions.md](./.github/copilot-instructions.md)** - AI agent guidance
+
+## License
+
+Educational project - Final Year Demo
+

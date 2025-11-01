@@ -40,7 +40,7 @@ export function TradeModal({ isOpen, onClose, symbol, action }: TradeModalProps)
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
     // Handle order submission
-    console.log("[v0] Order submitted:", {
+    console.log("[Luminex] Order submitted:", {
       symbol,
       action,
       orderType,

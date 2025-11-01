@@ -2,18 +2,19 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { ArrowUpRight, ArrowDownRight, Search, Menu, Eye, EyeOff } from "lucide-react"
+import { ArrowUpRight, ArrowDownRight, Search } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Navbar } from "@/components/navbar"
+import { Footer } from "@/components/footer"
 import { MobileNav } from "@/components/mobile-nav"
 import { StockTicker } from "@/components/stock-ticker"
 import { HoldingsChart } from "@/components/holdings-chart"
 import { AISuggestions } from "@/components/ai-suggestions"
 import { MarketNews } from "@/components/market-news"
 import { TodaysAnalysis } from "@/components/todays-analysis"
-import { LuminexLogo } from "@/components/luminex-logo"
 
 const mockIndices = [
   { name: "NIFTY 50", value: 21453.25, change: 145.3, changePercent: 0.68 },
@@ -135,57 +136,13 @@ export default function DashboardPage() {
   const totalValue = totalInvested + totalPnL
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-0">
-      {/* Header */}
-      <header className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
-        <div className="container mx-auto px-4 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" size="icon" className="md:hidden">
-              <Menu className="w-5 h-5" />
-            </Button>
-            <Link href="/" className="flex items-center gap-2">
-              <LuminexLogo className="w-8 h-8" />
-              <span className="font-bold text-xl">Luminex</span>
-            </Link>
-          </div>
-
-          <nav className="hidden md:flex items-center gap-6">
-            <Link href="/dashboard" className="text-sm font-medium text-foreground">
-              Home
-            </Link>
-            <Link href="/charts" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Charts
-            </Link>
-            <Link href="/holdings" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Holdings
-            </Link>
-            <Link href="/positions" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-              Positions
-            </Link>
-          </nav>
-
-          <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" onClick={() => setPrivacyMode(!privacyMode)} className="hidden md:flex">
-              {privacyMode ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-            </Button>
-            <Button size="sm" className="hidden md:flex" asChild>
-              <Link href="/trade">Trade</Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="/accounts">
-                <div className="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-sm font-medium">
-                  U
-                </div>
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-background flex flex-col pb-20 md:pb-0">
+      <Navbar privacyMode={privacyMode} onPrivacyToggle={() => setPrivacyMode(!privacyMode)} />
 
       {/* Stock Ticker */}
       <StockTicker />
 
-      <main className="container mx-auto px-4 py-6 space-y-6">
+      <main className="container mx-auto px-4 py-6 space-y-6 flex-1">
         {/* Portfolio Summary Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <Card className="transition-all hover:shadow-md border-l-4 border-l-primary">
@@ -410,6 +367,8 @@ export default function DashboardPage() {
           </div>
         </div>
       </main>
+
+      <Footer />
 
       {/* Mobile Navigation */}
       <MobileNav />

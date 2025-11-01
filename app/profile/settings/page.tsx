@@ -29,7 +29,7 @@ export default function SettingsPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Saving settings:", { formData, notifications })
+    console.log("[Luminex] Saving settings:", { formData, notifications })
   }
 
   return (

@@ -6,11 +6,12 @@ import "./globals.css"
 import { AuthProvider } from "@/contexts/auth-context"
 import { PriceProvider } from "@/contexts/price-context"
 import { Suspense } from "react"
+import { LoadingScreen } from "@/components/loading-screen"
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
-  generator: "v0.app",
+  title: "Luminex Trading",
+  description: "Virtual Trading Platform - Demo App",
+  generator: "Luminex",
 }
 
 const geistSans = Geist({
@@ -31,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
       <body>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingScreen />}>
           <AuthProvider>
             <PriceProvider>{children}</PriceProvider>
           </AuthProvider>

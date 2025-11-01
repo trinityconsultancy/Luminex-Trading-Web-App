@@ -23,7 +23,8 @@ export function WithdrawFundsModal({ isOpen, onClose }: WithdrawFundsModalProps)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Withdrawing funds:", { amount })
+    const handleWithdraw = async () => {
+    console.log("[Luminex] Withdrawing funds:", { amount })
     // Simulate success
     onClose()
   }
@@ -125,4 +126,5 @@ export function WithdrawFundsModal({ isOpen, onClose }: WithdrawFundsModalProps)
       </DialogContent>
     </Dialog>
   )
+}
 }

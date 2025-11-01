@@ -19,7 +19,7 @@ export default function ForgotPasswordPage() {
     e.preventDefault()
     setIsLoading(true)
 
-    console.log("[v0] Password reset request:", { email })
+    console.log("[Luminex] Password reset request:", { email })
 
     // Simulate API call
     setTimeout(() => {

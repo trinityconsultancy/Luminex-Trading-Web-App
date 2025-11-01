@@ -173,7 +173,7 @@ export default function ProfilePage() {
                 </div>
               </div>
               <Button variant="outline" size="sm" className="bg-transparent" asChild>
-                <Link href="/profile/settings">
+                <Link href="/account">
                   <Settings className="w-4 h-4 mr-2" />
                   Settings
                 </Link>
@@ -228,7 +228,7 @@ export default function ProfilePage() {
               </CardHeader>
               <CardContent className="space-y-2">
                 <Button variant="outline" className="w-full justify-between bg-transparent" asChild>
-                  <Link href="/profile/settings">
+                  <Link href="/account">
                     <div className="flex items-center gap-3">
                       <Settings className="w-5 h-5" />
                       <span>Account Settings</span>

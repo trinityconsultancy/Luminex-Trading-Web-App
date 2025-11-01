@@ -23,7 +23,7 @@ export function AddFundsModal({ isOpen, onClose }: AddFundsModalProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    console.log("[v0] Adding funds:", { amount, paymentMethod })
+    console.log("[Luminex] Adding funds:", { amount, paymentMethod })
     // Simulate success
     onClose()
   }
