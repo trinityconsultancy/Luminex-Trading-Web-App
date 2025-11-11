@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer"
 import { MobileNav } from "@/components/mobile-nav"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { PortfolioAllocationChart } from "@/components/portfolio-allocation-chart" // Fix import to use named import instead of default import
+import { AuthGuard } from "@/components/auth-guard"
 
 const mockHoldings = [
   {
@@ -69,7 +70,7 @@ const mockHoldings = [
   },
 ]
 
-export default function HoldingsPage() {
+function HoldingsContent() {
   const [searchQuery, setSearchQuery] = useState("")
   const [sortBy, setSortBy] = useState("pnl")
   const [filteredHoldings, setFilteredHoldings] = useState(mockHoldings)
@@ -231,5 +232,13 @@ export default function HoldingsPage() {
 
       <MobileNav />
     </div>
+  )
+}
+
+export default function HoldingsPage() {
+  return (
+    <AuthGuard>
+      <HoldingsContent />
+    </AuthGuard>
   )
 }

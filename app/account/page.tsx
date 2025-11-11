@@ -12,6 +12,7 @@ import { Label } from "@/components/ui/label"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { useAuth } from "@/contexts/auth-context"
+import { AuthGuard } from "@/components/auth-guard"
 
 interface ValidationErrors {
   name?: string
@@ -22,7 +23,7 @@ interface ValidationErrors {
   confirmPassword?: string
 }
 
-export default function AccountPage() {
+function AccountContent() {
   const router = useRouter()
   const { user, updateProfile, changePassword, logout, isAuthenticated } = useAuth()
 
@@ -503,5 +504,13 @@ export default function AccountPage() {
         </Tabs>
       </div>
     </div>
+  )
+}
+
+export default function AccountPage() {
+  return (
+    <AuthGuard>
+      <AccountContent />
+    </AuthGuard>
   )
 }

@@ -15,7 +15,36 @@ Luminex is a demo trading application built as a final year project MVP. It feat
 
 ## Quick Start
 
-### 1. Start Backend
+### Option 1: Run Both Together (Recommended) 🚀
+
+**Windows (Command Prompt)**:
+```bash
+start-dev.bat
+```
+
+**Windows (PowerShell)**:
+```powershell
+.\start-dev.ps1
+```
+
+**Linux/Mac (Bash)**:
+```bash
+chmod +x start-dev.sh
+./start-dev.sh
+```
+
+**Or using pnpm**:
+```bash
+pnpm dev:all
+```
+
+This will start:
+- Backend on http://localhost:5000
+- Frontend on http://localhost:3000
+
+### Option 2: Manual Start
+
+**1. Start Backend**:
 ```bash
 cd backend
 npm install
@@ -23,7 +52,7 @@ npm run setup  # One-time setup (creates .env, tests services)
 npm run dev    # Runs on http://localhost:5000
 ```
 
-### 2. Start Frontend
+**2. Start Frontend** (in new terminal):
 ```bash
 pnpm install
 pnpm dev       # Runs on http://localhost:3000

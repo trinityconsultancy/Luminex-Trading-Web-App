@@ -11,6 +11,7 @@ import { Badge } from "@/components/ui/badge"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { MobileNav } from "@/components/mobile-nav"
+import { AuthGuard } from "@/components/auth-guard"
 
 const mockFuturesContracts = [
   { symbol: "NIFTY", expiry: "28 Mar 2024", ltp: 21450.5, change: 125.3, changePercent: 0.59, oi: "12.5M" },
@@ -26,7 +27,7 @@ const mockOptionsChain = [
   { strike: 21700, callLTP: 52.25, callOI: "2.9M", putLTP: 265.5, putOI: "2.7M" },
 ]
 
-export default function FNOPage() {
+function FNOContent() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedContract, setSelectedContract] = useState("NIFTY")
 
@@ -201,5 +202,13 @@ export default function FNOPage() {
 
       <MobileNav />
     </div>
+  )
+}
+
+export default function FNOPage() {
+  return (
+    <AuthGuard>
+      <FNOContent />
+    </AuthGuard>
   )
 }

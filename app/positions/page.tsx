@@ -8,6 +8,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { MobileNav } from "@/components/mobile-nav"
+import { AuthGuard } from "@/components/auth-guard"
 
 const mockPositions = [
   {
@@ -45,7 +46,7 @@ const mockPositions = [
   },
 ]
 
-export default function PositionsPage() {
+function PositionsContent() {
   const totalPnL = mockPositions.reduce((sum, p) => sum + p.pnl, 0)
   const totalInvested = mockPositions.reduce((sum, p) => sum + p.avgPrice * p.quantity, 0)
   const totalCurrentValue = mockPositions.reduce((sum, p) => sum + p.ltp * p.quantity, 0)
@@ -180,5 +181,13 @@ export default function PositionsPage() {
 
       <MobileNav />
     </div>
+  )
+}
+
+export default function PositionsPage() {
+  return (
+    <AuthGuard>
+      <PositionsContent />
+    </AuthGuard>
   )
 }

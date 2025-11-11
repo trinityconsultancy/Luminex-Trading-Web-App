@@ -8,6 +8,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MobileNav } from "@/components/mobile-nav"
 import { AddFundsModal } from "@/components/add-funds-modal"
 import { WithdrawFundsModal } from "@/components/withdraw-funds-modal"
+import { AuthGuard } from "@/components/auth-guard"
 
 // Mock funds data
 const mockFundsData = {
@@ -66,7 +67,7 @@ const mockTransactions = [
   },
 ]
 
-export default function FundsPage() {
+function FundsContent() {
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
   const [isWithdrawModalOpen, setIsWithdrawModalOpen] = useState(false)
 
@@ -285,5 +286,13 @@ export default function FundsPage() {
       <AddFundsModal isOpen={isAddModalOpen} onClose={() => setIsAddModalOpen(false)} />
       <WithdrawFundsModal isOpen={isWithdrawModalOpen} onClose={() => setIsWithdrawModalOpen(false)} />
     </div>
+  )
+}
+
+export default function FundsPage() {
+  return (
+    <AuthGuard>
+      <FundsContent />
+    </AuthGuard>
   )
 }

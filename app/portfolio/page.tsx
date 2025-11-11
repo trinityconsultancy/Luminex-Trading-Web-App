@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { PortfolioChart } from "@/components/portfolio-chart"
 import { HoldingsTable } from "@/components/holdings-table"
 import { MobileNav } from "@/components/mobile-nav"
+import { AuthGuard } from "@/components/auth-guard"
 
 const mockPortfolio = {
   totalValue: 125430.5,
@@ -75,7 +76,7 @@ const mockSectorAllocation = [
   { sector: "Consumer", value: 16070.5, percent: 12.8 },
 ]
 
-export default function PortfolioPage() {
+function PortfolioContent() {
   const [timeframe, setTimeframe] = useState("1M")
 
   return (
@@ -261,5 +262,13 @@ export default function PortfolioPage() {
 
       <MobileNav />
     </div>
+  )
+}
+
+export default function PortfolioPage() {
+  return (
+    <AuthGuard>
+      <PortfolioContent />
+    </AuthGuard>
   )
 }

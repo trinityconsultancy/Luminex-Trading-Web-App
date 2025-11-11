@@ -12,6 +12,7 @@ import { MobileNav } from "@/components/mobile-nav"
 import { usePrices } from "@/contexts/price-context"
 import { StockListItem } from "@/components/stock-list-item"
 import { StockPreviewPanel } from "@/components/stock-preview-panel"
+import { AuthGuard } from "@/components/auth-guard"
 
 const topStocks = [
   { symbol: "RELIANCE", name: "Reliance Industries" },
@@ -26,7 +27,7 @@ const topStocks = [
   { symbol: "AXISBANK", name: "Axis Bank" },
 ]
 
-export default function ChartsPage() {
+function ChartsContent() {
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedStock, setSelectedStock] = useState(topStocks[0])
   const { getPrice } = usePrices()
@@ -88,5 +89,13 @@ export default function ChartsPage() {
 
       <MobileNav />
     </div>
+  )
+}
+
+export default function ChartsPage() {
+  return (
+    <AuthGuard>
+      <ChartsContent />
+    </AuthGuard>
   )
 }

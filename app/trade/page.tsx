@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input"
 import { MobileNav } from "@/components/mobile-nav"
 import { TradeModal } from "@/components/trade-modal"
 import { StockSearchResults } from "@/components/stock-search-results"
+import { AuthGuard } from "@/components/auth-guard"
 
 // Mock popular stocks data
 const popularStocks = [
@@ -21,7 +22,7 @@ const popularStocks = [
   { symbol: "BHARTIARTL", name: "Bharti Airtel", ltp: 1245.3, change: 5.6, changePercent: 0.45 },
 ]
 
-export default function TradePage() {
+function TradeContent() {
   const searchParams = useSearchParams()
   const [searchQuery, setSearchQuery] = useState("")
   const [selectedStock, setSelectedStock] = useState<string | null>(null)
@@ -217,5 +218,13 @@ export default function TradePage() {
         />
       )}
     </div>
+  )
+}
+
+export default function TradePage() {
+  return (
+    <AuthGuard>
+      <TradeContent />
+    </AuthGuard>
   )
 }

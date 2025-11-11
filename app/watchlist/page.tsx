@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { MobileNav } from "@/components/mobile-nav"
+import { AuthGuard } from "@/components/auth-guard"
 
 // Mock watchlist data
 const mockWatchlist = [
@@ -20,7 +21,7 @@ const mockWatchlist = [
   { symbol: "BHARTIARTL", name: "Bharti Airtel", ltp: 1245.3, change: 5.6, changePercent: 0.45 },
 ]
 
-export default function WatchlistPage() {
+function WatchlistContent() {
   const [searchQuery, setSearchQuery] = useState("")
   const [watchlist, setWatchlist] = useState(mockWatchlist)
 
@@ -140,5 +141,13 @@ export default function WatchlistPage() {
       {/* Mobile Navigation */}
       <MobileNav />
     </div>
+  )
+}
+
+export default function WatchlistPage() {
+  return (
+    <AuthGuard>
+      <WatchlistContent />
+    </AuthGuard>
   )
 }

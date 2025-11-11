@@ -34,7 +34,7 @@ router.use(authRateLimit(10, 15 * 60 * 1000)); // 10 attempts per 15 minutes
  * @access  Public
  */
 router.post('/register', validateRegistration, asyncHandler(async (req, res) => {
-  const { name, email, phone, password, confirmPassword } = req.body;
+  const { name, email, phone, password } = req.body;
 
   // Check if user already exists
   const existingUser = await User.findOne({

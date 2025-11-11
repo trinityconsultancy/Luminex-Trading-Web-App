@@ -14,10 +14,11 @@ import { OTPInput } from "@/components/otp-input"
 import { useAuth } from "@/contexts/auth-context"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { GuestGuard } from "@/components/auth-guard"
 
 type LoginStep = 'credentials' | 'verify-otp'
 
-export default function LoginPage() {
+function LoginPageContent() {
   const router = useRouter()
   const { login, verifyOTP: verifyLoginOTP, resendOTP } = useAuth()
   
@@ -77,9 +78,13 @@ export default function LoginPage() {
     if (result.success) {
       setSuccess("Login successful! Redirecting...")
       
-      // Redirect to dashboard
+      // Check for redirect destination
+      const redirectTo = sessionStorage.getItem("redirectAfterLogin") || "/dashboard"
+      sessionStorage.removeItem("redirectAfterLogin")
+      
+      // Redirect to intended page or dashboard
       setTimeout(() => {
-        router.push('/dashboard')
+        router.push(redirectTo)
       }, 1000)
     } else {
       setError(result.message)
@@ -290,5 +295,13 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function LoginPage() {
+  return (
+    <GuestGuard>
+      <LoginPageContent />
+    </GuestGuard>
   )
 }

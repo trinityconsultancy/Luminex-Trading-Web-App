@@ -13,6 +13,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { OTPInput } from "@/components/otp-input"
 import { useAuth } from "@/contexts/auth-context"
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { GuestGuard } from "@/components/auth-guard"
 
 type SignupStep = 'details' | 'verify-email' | 'complete'
 
@@ -24,7 +25,7 @@ interface ValidationErrors {
   confirmPassword?: string
 }
 
-export default function SignupPage() {
+function SignupPageContent() {
   const router = useRouter()
   const { register, verifyOTP, resendOTP } = useAuth()
   
@@ -483,5 +484,13 @@ export default function SignupPage() {
         </div>
       </div>
     </div>
+  )
+}
+
+export default function SignupPage() {
+  return (
+    <GuestGuard>
+      <SignupPageContent />
+    </GuestGuard>
   )
 }

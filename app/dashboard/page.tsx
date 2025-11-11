@@ -15,6 +15,7 @@ import { HoldingsChart } from "@/components/holdings-chart"
 import { AISuggestions } from "@/components/ai-suggestions"
 import { MarketNews } from "@/components/market-news"
 import { TodaysAnalysis } from "@/components/todays-analysis"
+import { AuthGuard } from "@/components/auth-guard"
 
 const mockIndices = [
   { name: "NIFTY 50", value: 21453.25, change: 145.3, changePercent: 0.68 },
@@ -127,7 +128,7 @@ const mockHoldings = [
   },
 ]
 
-export default function DashboardPage() {
+function DashboardContent() {
   const [searchQuery, setSearchQuery] = useState("")
   const [privacyMode, setPrivacyMode] = useState(false)
 
@@ -375,3 +376,13 @@ export default function DashboardPage() {
     </div>
   )
 }
+
+function DashboardPage() {
+  return (
+    <AuthGuard>
+      <DashboardContent />
+    </AuthGuard>
+  )
+}
+
+export default DashboardPage

@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { MobileNav } from "@/components/mobile-nav"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { AuthGuard } from "@/components/auth-guard"
 
 // Mock user data
 const mockUserData = {
@@ -105,7 +106,7 @@ const mockPendingOrders = [
   },
 ]
 
-export default function ProfilePage() {
+function ProfileContent() {
   const [activeTab, setActiveTab] = useState("overview")
 
   return (
@@ -401,5 +402,13 @@ export default function ProfilePage() {
       {/* Mobile Navigation */}
       <MobileNav />
     </div>
+  )
+}
+
+export default function ProfilePage() {
+  return (
+    <AuthGuard>
+      <ProfileContent />
+    </AuthGuard>
   )
 }
